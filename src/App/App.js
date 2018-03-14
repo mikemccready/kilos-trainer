@@ -1,21 +1,12 @@
 import React, { Component } from 'react'
 
 import Router from '../router.js'
-
 import styles from './app.scss'
 
-export default class App extends Component {
-  state = {
-    newSession: false
-  }
+const App = () => (
+  <div className={styles.app}>
+    <Router />
+  </div>
+)
 
-  render() {
-    const { newSession } = this.state
-
-    return (
-      <div className={styles.app}>
-        <Router />
-      </div>
-    )
-  }
-}
+export default App
