@@ -1,0 +1,48 @@
+.app {
+  font-family: "minion-pro",serif;
+  font-size: 15px;
+  background: rgb(245,245,245);
+  min-height: 100vh;
+
+  :global(.container) {
+    width: 95%;
+    padding: 0 2.5%;
+    max-width: 30rem;
+    margin: 0 auto;
+  }
+
+  :global(.list-item) {
+    display: flex;
+    padding: .5rem 2.5%;
+    width: 95%;
+    background: white;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  :global(.action-block) {
+    display: block;
+    text-align: right;
+  }
+
+  // button styles
+  button {
+    color: red;
+    background: transparent;
+    border: none;
+    height: 2.25rem;
+    cursor: pointer;
+  }
+  :global(.add-list-btn) {
+    border: solid red 1px;
+    width: 100%;
+  }
+
+  input, textarea {
+    margin: .25rem 0;
+    display: block;
+    border: none;
+    width: 95%;
+    padding: .5rem 2.5%;
+  }
+}
