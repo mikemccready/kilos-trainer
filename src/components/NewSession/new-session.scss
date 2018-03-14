@@ -1,0 +1,19 @@
+.new-session {
+
+  .sentiment-wrapper {
+    display: flex;
+    justify-content: space-around;
+
+    img {
+      width: 30% !important;
+      min-width: 5rem !important;
+      height: auto !important;
+      cursor: pointer;
+      transition: .5s;
+
+      &:hover {
+        transform: scale(1.15);
+      }
+    }
+  }
+}
