@@ -13,10 +13,13 @@ export default class NewSession extends Component {
     sentiment: '',
     techniques: [],
     strengths: [],
-    weaknesses: []
+    weaknesses: [],
+    submitting: false
   }
 
   submitSession() {
+    this.setState({ submitting: true })
+
     const storedHashed = localStorage.getItem('sessions')
     let stored = []
 
@@ -36,10 +39,12 @@ export default class NewSession extends Component {
 
     const ciphertext = AES.encrypt(JSON.stringify(stored), secret)
     localStorage.setItem('sessions', ciphertext)
+    this.setState({ submitting: false })
+    this.props.history.push('/')
   }
 
   render() {
-    const { section, techniques } = this.state
+    const { section, techniques, submitting } = this.state
 
     return (
       <div className={'container' + ' ' + styles['new-session']}>
@@ -90,7 +95,8 @@ export default class NewSession extends Component {
             changeSection={section => this.setState({ section })}
             techniques={this.state.weaknesses}
             updateTechniques={weaknesses => this.setState({ weaknesses })}
-            submitSession={() => this.submitSession()}/>
+            submitSession={() => this.submitSession()}
+            submitting={submitting} />
         }
 
       </div>
