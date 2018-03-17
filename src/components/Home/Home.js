@@ -5,7 +5,10 @@ import { hashSecret as secret } from '../../../config.js'
 
 export default class Home extends Component {
   state = {
-    sessions: null
+    sessions: null,
+    strengths: {},
+    weaknesses: {},
+    techniques: {}
   }
 
   componentDidMount() {
@@ -16,8 +19,31 @@ export default class Home extends Component {
     const storedHashed = localStorage.getItem('sessions')
     if (storedHashed) {
       const bytes = AES.decrypt(storedHashed.toString(), secret)
-      this.setState({ sessions: JSON.parse(bytes.toString(enc.Utf8)) })
+      const sessions = JSON.parse(bytes.toString(enc.Utf8))
+      this.setState({ sessions })
+      this.parseTechniques(sessions)
+      return
     }
+    return
+  }
+
+  parseTechniques(sessions) {
+    let storedTechniques = []
+    let storedStrengths = []
+    let storedWeaknesses = []
+
+    const techniquesCount = {}
+    const strengthsCount = {}
+    const weaknessesCount = {}
+
+    sessions.forEach(session => {
+      storedTechniques = storedTechniques.concat(session.techniques)
+      storedStrengths.concat(session.strengths)
+      storedWeaknesses.concat(session.weaknesses)
+    })
+    storedTechniques.forEach(tech => techniquesCount[tech.technique] ? techniquesCount[tech.technique]++ : techniquesCount[tech.technique] = 1)
+    const techniques = Object.keys(techniquesCount).sort((a,b) => techniquesCount[b] - techniquesCount[a])
+    console.log(techniques)
   }
 
   render() {
