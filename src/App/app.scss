@@ -1,7 +1,7 @@
 .app {
-  font-family: "minion-pro",serif;
+  font-family: Roboto Mono,helvetica,serif;
   font-size: 15px;
-  background: rgb(245,245,245);
+  background: white;
   min-height: 100vh;
 
   :global(.container) {
@@ -13,16 +13,22 @@
 
   :global(.list-item) {
     display: flex;
-    padding: .5rem 2.5%;
+    padding: .25rem 2.5%;
+    margin: .25rem 0;
+    height: 2.5rem;
     width: 95%;
-    background: white;
+    background: rgb(240,240,240);
     justify-content: space-between;
     align-items: center;
   }
 
   :global(.action-block) {
+    margin-top: 1rem;
     display: block;
     text-align: right;
+    background: rgb(250,250,250);
+    height: 2.5rem;
+    padding: 0 1rem;
   }
 
   // button styles
@@ -30,19 +36,33 @@
     color: red;
     background: transparent;
     border: none;
-    height: 2.25rem;
+    height: 2.5rem;
+    padding: 0 .75rem;
     cursor: pointer;
   }
   :global(.add-list-btn) {
-    border: solid red 1px;
+    margin: .25rem 0 1rem;
+    border-radius: 3px;
+    background: rgb(250,250,250);
     width: 100%;
+    font-size: 5rem;
+    line-height: 4rem;
+    box-shadow: 0 7px 15px rgba(0,0,0,0.10), 0 5px 5px rgba(0,0,0,0.12);
   }
 
   input, textarea {
-    margin: .25rem 0;
+    margin: .375rem 0;
     display: block;
-    border: none;
+    border: 2px solid transparent;
+    background: rgb(240,240,240);
     width: 95%;
-    padding: .5rem 2.5%;
+    padding: .75rem 2.5%;
+    outline: none;
+    transition: .5s;
+
+    &:focus {
+      border-left: red solid 2px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.10);
+    }
   }
 }
